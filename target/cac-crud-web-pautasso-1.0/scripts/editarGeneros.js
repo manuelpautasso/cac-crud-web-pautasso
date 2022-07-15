@@ -1,0 +1,1 @@
+const generos = document.getElementsByClassName('genero-a-editar');
