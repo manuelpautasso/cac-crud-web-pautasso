@@ -8,10 +8,10 @@ import java.util.List;
  */
 public interface ModeloLibro {
     /**
-     * Retorna una lista de los libros
+     * Retorna una lista de los libros con los generos asociados
      * @return 
      */
-    public List<Libro> getLibros();
+    public List<Libro> getLibrosConGeneros();
     
     /**
      * Retorna un libro por ID
@@ -20,12 +20,26 @@ public interface ModeloLibro {
      */
     public Libro getLibro(int id);
     
+     /**
+     * Retorna una lista de los libros que tienen relacion con el genero
+     * @param idGenero, el id de uno de los generos de los libros a retornar 
+     * @return 
+     */
+    public List<Libro> getLibrosConGenero(int idGenero);
+    
     /**
      * Agrega un libro al modelo
      * @param libro, El libro a agregar
      * @return La cantidad de registros modificados
      */
     public int addLibro(Libro libro);
+    
+    /**
+     * Agrega una relacion entre libro y genero
+     * @param idLibro, @paramidGenero, los ids del libro y genero a relacionar
+     * @return La cantidad de registros modificados
+     */
+    public int addGeneroALibro(int idLibro, int idGenero);
     
     /**
      * Modifica un libro del modelo
@@ -40,4 +54,19 @@ public interface ModeloLibro {
      * @return La cantidad de registros modificados
      */
     public int removeLibro(int id);
+    
+    /**
+     * Borra las relaciones entre un libro y generos con el id del libro
+     * @param id, El id del libro a eliminar sus relaciones
+     * @return La cantidad de registros modificados
+     */
+    public int removeRelationLibroGenero(int idLibro);
+    
+    /**
+     * Borra la relacion entre un libro y un genero con el id del libro y del genero
+     * @param idLibro, @param idGenero, El id del libro y el del genero a eliminar sus relacion mutua
+     * @return La cantidad de registros modificados
+     */
+    public int removeRelationLibroGenero(int idLibro, int idGenero);
+    
 }

@@ -38,7 +38,7 @@
                         <td>${libro.autor}</td>
                         
                         <c:choose>
-                            <c:when test="${libro.generos != null}">
+                            <c:when test="${libro.generos != null && !libro.generos.isEmpty()}">
                                 <td>
                                     <c:forEach items="${libro.generos}" var="genero">
                                         ${genero.nombre} <br/>

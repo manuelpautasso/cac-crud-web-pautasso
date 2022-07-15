@@ -39,7 +39,7 @@ public class LibroServlet extends HttpServlet{
             case "eliminar":
                 // eliminar
             default:                
-                request.setAttribute("listadoLibros", modeloLibro.getLibros());
+                request.setAttribute("listadoLibros", modeloLibro.getLibrosConGeneros());
                 request.getRequestDispatcher(URI_LIST_LIBROS).forward(request, response);
         }
                 
@@ -60,14 +60,15 @@ public class LibroServlet extends HttpServlet{
                 modeloLibro.addLibro(libro);
                 break;
             case "update":
-                /*id = Integer.parseInt(request.getParameter("id"));
-                alu = model.getAlumno(id);
-                cargarAlumnoSegunParams(alu, request);
-                model.updateAlumno(alu);*/
+                id = Integer.parseInt(request.getParameter("id"));
+                libro = modeloLibro.getLibro(id);
+                libroFromRequest(libro, request);
+                modeloLibro.updateLibro(libro);
                 break;
             case "delete":
-                /*id = Integer.parseInt(request.getParameter("id"));
-                model.removeAlumno(id);*/
+                id = Integer.parseInt(request.getParameter("id"));
+                modeloLibro.removeRelationLibroGenero(id);
+                modeloLibro.removeLibro(id);
                 break;
         }
         doGet(request, response);

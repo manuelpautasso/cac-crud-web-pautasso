@@ -40,4 +40,18 @@ public interface ModeloGenero {
      * @return La cantidad de registros modificados
      */
     public int removeGenero(int id);
+    
+    /**
+     * Borra las relaciones entre un libro y generos con el id del genero
+     * @param id, El id del libro a eliminar sus relaciones
+     * @return La cantidad de registros modificados
+     */
+    public int removeRelationGeneroLibro(int idGenero);
+    
+    /**
+     * Borra la relacion entre un libro y un genero con el id del libro y del genero
+     * @param idGenero, @param idLibro, El id del libro y el del genero a eliminar sus relacion mutua
+     * @return La cantidad de registros modificados
+     */
+    public int removeRelationGeneroLibro(int idGenero, int idLibro);
 }

@@ -33,7 +33,9 @@
                         
                         <td>
                             <div class="justify-content-center">
-                                <a href="${pageContext.request.contextPath}/genero?accion=editar&id=${genero.id}" class="btn btn-warning btn-block w-100 py-2 my-2 genero-a-editar">Editar</a>
+                                <a href="#id=${genero.id}&nombre=${genero.nombre}" data-bs-toggle="modal" data-bs-target="#modalAgregarGenero" 
+                                   class="btn btn-warning btn-block w-100 py-2 my-2 genero-a-editar" 
+                                   value="${genero.id}">Editar</a>
                             </div>
                         </td>
                         <td>
