@@ -33,7 +33,7 @@
                         
                         <td>
                             <div class="justify-content-center">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAgregarGenero" 
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalEditarGenero" 
                                    class="btn btn-warning btn-block w-100 py-2 my-2 genero-a-editar" 
                                    value="${genero.id}" name="${genero.nombre}">Editar</a>
                             </div>
