@@ -15,7 +15,24 @@ public class ModeloLibroMySQL implements ModeloLibro {
             + "LEFT JOIN generos ON generos_libros.genero_id = generos.id_genero "
             + "GROUP BY libros.id_libro, libros.titulo, libros.autor";
 
-    private static final String GET_BY_ID_QUERY = "SELECT * FROM libros WHERE id_libro = ?";
+    private static final String GET_BY_ID_QUERY = "SELECT libros.*, group_concat(DISTINCT generos.nombre ORDER BY generos.nombre DESC SEPARATOR ', ') "
+            + "FROM libros "
+            + "LEFT JOIN generos_libros ON libros.id_libro = generos_libros.libro_id "
+            + "LEFT JOIN generos ON generos_libros.genero_id = generos.id_genero "
+            + "WHERE libros.id_libro = ? "
+            + "GROUP BY libros.id_libro, libros.titulo, libros.autor";
+    
+    
+    
+    
+    private static final String GET_BY_TITULO_QUERY = "SELECT libros.*, group_concat(DISTINCT generos.nombre ORDER BY generos.nombre DESC SEPARATOR ', ') "
+            + "FROM libros "
+            + "LEFT JOIN generos_libros ON libros.id_libro = generos_libros.libro_id "
+            + "LEFT JOIN generos ON generos_libros.genero_id = generos.id_genero "
+            + "WHERE libros.titulo = ? "
+            + "GROUP BY libros.id_libro, libros.titulo, libros.autor";
+    
+    
 
     private static final String GET_BOOKS_BY_GENERO_ID = "SELECT libros.*, group_concat(DISTINCT generos.nombre ORDER BY generos.nombre DESC SEPARATOR ', ') "
             + "FROM libros "
@@ -32,9 +49,11 @@ public class ModeloLibroMySQL implements ModeloLibro {
     private static final String ADD_LIBRO_GENERO_RELATION = "INSERT INTO generos_libros VALUES  (null, ?, ?)";
 
     private static final String DELETE_LIBRO_QUERY = "DELETE FROM libros WHERE id_libro = ?";
-    private static final String DELETE_LIBRO_GENERO_RELATION = "DELETE FROM generos_libros "
-            + "WHERE libro_id = ?";
+    
     private static final String DELETE_LIBRO_GENERO_RELATIONS = "DELETE FROM generos_libros "
+            + "WHERE libro_id = ?";
+    
+    private static final String DELETE_LIBRO_GENERO_RELATION = "DELETE FROM generos_libros "
             + "WHERE libro_id = ?, genero_id = ?";
 
     @Override
@@ -73,6 +92,26 @@ public class ModeloLibroMySQL implements ModeloLibro {
 
         return libro;
     }
+    
+        
+    @Override
+    public Libro getLibro(String titulo) {
+        Libro libro;
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(GET_BY_TITULO_QUERY);) {
+            ps.setString(1, titulo);
+            try (ResultSet rs = ps.executeQuery();) {
+                rs.next();
+                libro = rsToLibro(rs);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error de SQL", ex);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al obtener libro", ex);
+        }
+
+        return libro;
+    }
+
 
     @Override
     public List<Libro> getLibrosConGenero(int idGenero) {
@@ -199,6 +238,7 @@ public class ModeloLibroMySQL implements ModeloLibro {
 
         return libro;
     }
+    
 
     private void fillPreparedStatement(PreparedStatement ps, Libro libro) throws SQLException {
         ps.setString(1, libro.getTitulo());

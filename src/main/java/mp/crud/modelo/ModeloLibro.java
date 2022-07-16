@@ -20,6 +20,13 @@ public interface ModeloLibro {
      */
     public Libro getLibro(int id);
     
+    /**
+     * Retorna un libro por titulo
+     * @param titulo, el titulo del libro a retornar
+     * @return El libro encontrado por titulo o null si no existe
+     */
+    public Libro getLibro(String titulo);
+        
      /**
      * Retorna una lista de los libros que tienen relacion con el genero
      * @param idGenero, el id de uno de los generos de los libros a retornar 

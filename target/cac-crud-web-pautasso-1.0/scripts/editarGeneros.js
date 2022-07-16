@@ -1,19 +1,25 @@
+var generosMap = [];
 var generos = document.getElementsByClassName('genero-a-editar');
 
-for(var i =0; i < generos.length; i++){
-    agregarListener(generos.item(i));
+for(var i =0; i < generos.length; i++){ 
+    
+    console.log(generos[i].attributes.name.value); 
+    
+    console.log(generos[i].attributes.value.value); 
+    
+    
+    let idGenero = generos[i].attributes.value.value;
+    let nombreGenero = generos[i].attributes.name.value;
+    
+    console.log("id = " + idGenero);
+    console.log("nombre = " + nombreGenero);
+    generos[i].addEventListener('click', cambiarVariablesDeEditar);
 }
 
 
-function cambiarVariablesDeEditar(){
-    let url = this;
-    console.log("url" + url);
-    console.log(typeof (url));
-    let urlParams = new URLSearchParams(url);
-    console.log(typeof (urlParams));
-    console.log("urlParams: " + urlParams);
-    console.log("id: " + urlParams.get('id'));
-    console.log("nombre: " + this);
+function cambiarVariablesDeEditar () {
+    console.log(this.name);
+    console.log("n = " + idGenero);
     let idElementForm = document.getElementById('idGeneroAEditar');
     let nombreElementForm = document.getElementById('nombreGeneroAEditar');
     let tituloElementForm = document.getElementById('tituloGeneroAEditar');
@@ -21,10 +27,4 @@ function cambiarVariablesDeEditar(){
     /*idElementForm.value = id;
     nombreElementForm.value = nombre;
     tituloElementForm.textContent = nombre;*/
-}
-
-function agregarListener(elementoGenero) {
-    console.log(elementoGenero.toString());
-    elementoGenero.addEventListener("click", cambiarVariablesDeEditar);
-}
-
+};

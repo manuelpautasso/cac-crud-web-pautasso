@@ -4,7 +4,7 @@
  https://stackoverflow.com/questions/14672746/how-to-compress-an-image-via-javascript-in-the-browser
  https://morioh.com/p/872a8ce21d61
  */
-
+var generosCheckbox = [];
 
 const form = document.getElementById('formAgregarLibro');
 const fotoInput = document.getElementById('inputPortada');

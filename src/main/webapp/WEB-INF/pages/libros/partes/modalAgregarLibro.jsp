@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal modal-lg" id="modalAgregarLibro"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" >
@@ -54,31 +54,18 @@
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
                       Generos
                     </button>
-                    
+                        
                         <div class="dropdown-menu form-check" aria-labelledby="dropdownMenuClickableInside">
-                          <div class="dropdown-item mx-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Terror
-                                </label>
-                          </div>
-                          <div class="dropdown-item mx-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Fantasia
-                                </label>
-                          </div>
-                          <div class="dropdown-item mx-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Psicologico
-                                </label>
-                          </div>
-                        </div>
+                            <c:forEach items="${listadoGeneros}" var="genero">
+                                <div class="dropdown-item mx-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox-${genero.nombre}">
+                                    <label class="form-check-label" for="checkbox-${genero.nombre}">
+                                        ${genero.nombre}
+                                    </label>
+                                </div>
+                            </c:forEach>   
                     </div>
                 </div>
-               
-          
             </div>
             
             <div class="modal-footer">

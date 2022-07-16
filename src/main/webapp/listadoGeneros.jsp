@@ -33,9 +33,9 @@
                         
                         <td>
                             <div class="justify-content-center">
-                                <a href="#id=${genero.id}&nombre=${genero.nombre}" data-bs-toggle="modal" data-bs-target="#modalAgregarGenero" 
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAgregarGenero" 
                                    class="btn btn-warning btn-block w-100 py-2 my-2 genero-a-editar" 
-                                   value="${genero.id}">Editar</a>
+                                   value="${genero.id}" name="${genero.nombre}">Editar</a>
                             </div>
                         </td>
                         <td>
