@@ -21,6 +21,13 @@ public interface ModeloGenero {
     public Genero getGenero(int id);
     
     /**
+     * Retorna lista de generos relacionados con el libro
+     * @param idLibro, el id del libro a buscar sus generos
+     * @return Lista de generos asociados al libro
+     */
+    public List<Genero> getGenerosDeLibro(int idLibro);
+            
+    /**
      * Agrega un genero al modelo
      * @param genero, El genero a agregar
      * @return La cantidad de registros modificados

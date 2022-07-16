@@ -11,6 +11,12 @@ public class ModeloGeneroMySQL implements ModeloGenero {
 
     private static final String GET_ALL_GENEROS_QUERY = "SELECT * FROM generos";
     private static final String GET_BY_ID_QUERY = "SELECT * FROM generos WHERE id_genero = ?";
+
+    private static final String GET_GENEROS_BY_BOOK_ID = "SELECT generos.* FROM generos "
+            + "LEFT JOIN generos_libros ON generos_libros.genero_id = generos.id_genero "
+            + "LEFT JOIN libros ON libros.id_libro = generos_libros.libro_id "
+            + "WHERE libros.id_libro = ? ";
+
     private static final String ADD_GENERO_QUERY = "INSERT INTO generos VALUES  (null, ?)";
     private static final String UPDATE_GENERO_QUERY = "UPDATE generos SET nombre = ? WHERE id_genero = ?";
     private static final String DELETE_GENERO_QUERY = "DELETE FROM generos WHERE id_genero = ?";
@@ -55,6 +61,25 @@ public class ModeloGeneroMySQL implements ModeloGenero {
     }
 
     @Override
+    public List<Genero> getGenerosDeLibro(int idLibro) {
+        List<Genero> generos = new ArrayList<>();
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(GET_GENEROS_BY_BOOK_ID);) {
+            ps.setInt(1, idLibro);
+            try (ResultSet rs = ps.executeQuery();) {
+                while (rs.next()) {
+                    generos.add(rsToGenero(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error de SQL", ex);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al obtener los generos del libro", ex);
+        }
+
+        return generos;
+    }
+
+    @Override
     public int addGenero(Genero genero) {
         int regsAgregados = 0;
         try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(ADD_GENERO_QUERY);) {
@@ -96,7 +121,7 @@ public class ModeloGeneroMySQL implements ModeloGenero {
         }
         return regsBorrados;
     }
-    
+
     @Override
     public int removeRelationGeneroLibro(int idGenero) {
         int regsBorrados = 0;
@@ -126,12 +151,10 @@ public class ModeloGeneroMySQL implements ModeloGenero {
         return regsBorrados;
     }
 
-
     private Genero rsToGenero(ResultSet rs) throws SQLException {
         int id = rs.getInt(1);
         String nombre = rs.getString(2);
         return new Genero(id, nombre);
     }
-
 
 }

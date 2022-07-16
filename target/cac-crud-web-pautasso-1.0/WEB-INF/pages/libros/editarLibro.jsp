@@ -7,7 +7,6 @@
 
 <jsp:include page="../comunes/navbar.jsp"/>
 
-
         <h2 class="text-center">Editar libro "${libroAEditar.titulo}"</h2>
 
         <div class="container-fluid col-11">
@@ -56,22 +55,30 @@
                 
                 <div class="btn-group">
                     <div class="form-check dropend px-4 py-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
-                      Generos
-                    </button>
-                        
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
+                          Generos
+                        </button>
                         <div class="dropdown-menu form-check" aria-labelledby="dropdownMenuClickableInside">
                             <c:forEach items="${listadoGeneros}" var="genero">
+                                <c:set var="encontradoEnLibro" value="false" scope="page"/>
                                 <div class="dropdown-item mx-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkbox-${genero.nombre}">
-                                    <label class="form-check-label" for="checkbox-${genero.nombre}">
+                                    <c:forEach items="${generosLibroAEditar}" var="generoLibro">
+                                        <c:if test="${encontradoEnLibro == false && generoLibro.id == genero.id}">
+                                            <input class="form-check-input" type="checkbox" id="checkbox-${genero.nombre}" checked>
+                                            <c:set var="encontradoEnLibro" value="true" scope="page"/>
+                                        </c:if>
+                                    </c:forEach>
+                                    <c:if test="${encontradoEnLibro == false}">
+                                        <input class="form-check-input" type="checkbox" id="checkbox-${genero.nombre}">
+                                    </c:if>
+                                    <label class="form-check-label" for="checkbox-label-${genero.nombre}">
                                         ${genero.nombre}
                                     </label>
                                 </div>
                             </c:forEach>   
+                        </div>
                     </div>
                 </div>
-            </div>
             
             <div class="container-fluid p-2 col-8">
                 <div class="row text-center">            
@@ -81,10 +88,9 @@
                     </div>
                 </div>
             </div>
-        </form>
-
-</div>
         </div>
+    </form>
+</div>
 
 <jsp:include page="../comunes/footer.jsp"/>
 <script src="scripts/fotobase64.js"></script>  

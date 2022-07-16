@@ -15,7 +15,7 @@ import mp.crud.modelo.Libro;
 import mp.crud.modelo.ModeloFactory;
 import mp.crud.modelo.ModeloGenero;
 import mp.crud.modelo.ModeloLibro;
-import sun.rmi.server.Dispatcher;
+
 
 @WebServlet(name = "LibroServlet", urlPatterns = {"/libro"})
 public class LibroServlet extends HttpServlet{
@@ -40,9 +40,12 @@ public class LibroServlet extends HttpServlet{
         switch (accion){            
             case "editar":
                 id = Integer.parseInt(request.getParameter("id"));
-                Libro libroAEditar = modeloLibro.getLibro(id); 
-                System.out.println(libroAEditar);
+                Libro libroAEditar = modeloLibro.getLibro(id);
                 request.setAttribute("libroAEditar", libroAEditar);
+                request.setAttribute("listadoGeneros", modeloGenero.getGeneros());
+                List<Genero> generosDeLibro = modeloGenero.getGenerosDeLibro(id);
+                System.out.println(generosDeLibro.toString());
+                request.setAttribute("generosLibroAEditar", generosDeLibro);
                 request.getRequestDispatcher(URI_UPDATE_LIBRO).forward(request, response);
                 break;
             case "eliminar":
