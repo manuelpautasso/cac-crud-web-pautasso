@@ -43,7 +43,7 @@ public class ModeloLibroMySQL implements ModeloLibro {
 
     private static final String ADD_BOOK_QUERY = "INSERT INTO libros VALUES  (null, ?, ?, ?, ?, ?)";
 
-    private static final String UPDATE_LIBRO_QUERY = "UPDATE libros SET titulo = ?, autor = ?, descripcion = ? "
+    private static final String UPDATE_LIBRO_QUERY = "UPDATE libros SET titulo = ?, autor = ?, descripcion = ?, "
             + "portada = ?, editora = ? WHERE id_libro = ?";
 
     private static final String ADD_LIBRO_GENERO_RELATION = "INSERT INTO generos_libros VALUES  (null, ?, ?)";

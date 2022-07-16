@@ -11,7 +11,7 @@
         <h2 class="text-center">Editar libro "${libroAEditar.titulo}"</h2>
 
         <div class="container-fluid col-11">
-        <form id="formAgregarLibro" action="${pageContext.request.contextPath}/libro?accion=update"
+        <form id="formAgregarLibro" action="${pageContext.request.contextPath}/libro?accion=update&id=${libroAEditar.id}"
                   method="post" class="was-validated">
             
             <div class="row">
@@ -50,7 +50,7 @@
                       <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>                      
                       <div class="col-sm-10">
                       <textarea class="form-control" aria-label="With textarea"                             
-                         id="descripcion" name="descripcion" value="${libroAEditar.descripcion}" required></textarea>
+                         id="descripcion" name="descripcion" value="" required>${libroAEditar.descripcion}</textarea>
                     </div>
                 </div>
                 
