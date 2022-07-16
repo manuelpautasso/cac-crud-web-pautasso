@@ -9,7 +9,7 @@
 
 <div class="container-fluid p-2 col-8">
     <h5 class="text-center">El genero a eliminar es:</h4>
-    <h2 class="text-center">${generoAEliminar.nombre}</h2>
+    <h2 class="text-center fs-1">${generoAEliminar.nombre}</h2>
 </div>
 
 <div class="container-fluid p-2 col-8">
@@ -29,9 +29,11 @@
 
 </div>
 
-<div class="container-fluid mt-2 mb-3 col-5">
+<div class="container-fluid mt-3 mb-3 col-5">
     <c:choose>
         <c:when test="${librosConGenero != null && !librosConGenero.isEmpty()}">
+            <p class="text-center fs-4">Los siguientes libros perderan este genero:</p>
+            
             <table class="table table-dark table-striped">
                 <tr>
                     <td class="col-1">Portada</td>
