@@ -15,7 +15,7 @@
             
             <div class="row">
                 <div class="row mb-3">                    
-                      <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>                      
+                      <label for="titulo" class="col-sm-2 col-form-label">Título</label>                      
                       <div class="col-sm-10">
                           <input type="text" class="form-control" id="titulo" name="titulo" value="${libroAEditar.titulo}" required>
                     </div>
@@ -46,7 +46,7 @@
                 
                 
                 <div class="row mb-3">                    
-                      <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>                      
+                      <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>                      
                       <div class="col-sm-10">
                       <textarea class="form-control" aria-label="With textarea"                             
                          id="descripcion" name="descripcion" value="" required>${libroAEditar.descripcion}</textarea>
@@ -56,7 +56,7 @@
                 <div class="btn-group">
                     <div class="form-check dropend px-4 py-3">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
-                          Generos
+                          Géneros
                         </button>
                         <div class="dropdown-menu form-check" aria-labelledby="dropdownMenuClickableInside">
                             <c:forEach items="${listadoGeneros}" var="genero">
@@ -96,6 +96,6 @@
 </div>
 
 <jsp:include page="../comunes/footer.jsp"/>
-<script src="scripts/fotobase64.js"></script>  
+<script src="scripts/manejoForms.js"></script>  
 
 <jsp:include page="../comunes/finHTML.jsp"/>

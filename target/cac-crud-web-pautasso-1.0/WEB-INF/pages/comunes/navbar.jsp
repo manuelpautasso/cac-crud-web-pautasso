@@ -13,7 +13,7 @@
           <a class="nav-link active fs-4 fw-semibold ms-3 me-2 text-white" aria-current="page" href="${pageContext.request.contextPath}/libro">Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active fs-4 fw-semibold mx-2 text-white" aria-current="page" href="${pageContext.request.contextPath}/genero">Generos</a>
+          <a class="nav-link active fs-4 fw-semibold mx-2 text-white" aria-current="page" href="${pageContext.request.contextPath}/genero">Géneros</a>
         </li>        
       </ul>      
     </div>

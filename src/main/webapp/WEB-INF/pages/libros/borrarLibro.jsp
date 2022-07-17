@@ -9,7 +9,7 @@
 
 <div class="container-fluid p-2 col-8">
     <div class="col-3"><img class="card-img-top rounded mx-auto d-block" src="${libroAEliminar.portada}" alt="Foto de ${libroAEliminar.titulo}" /></div>
-    <div><p>El libro que esta por eliminar es <span class="fw-bold">${libroAEliminar.titulo}</span></p>
+    <div><p>El libro que está por eliminar es <span class="fw-bold">${libroAEliminar.titulo}</span></p>
     <p>Escrito por <span class="fw-bold">${libroAEliminar.autor}</span></p>     
     <p>Editado por <span class="fw-semibold">${libroAEliminar.editora}</span></p>
     <div class="my-4"><p class="m-1">Sinopsis:</p>

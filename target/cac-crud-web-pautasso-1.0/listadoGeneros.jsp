@@ -9,7 +9,7 @@
 
 <div class="container-fluid p-5 col-8">
     <h1 class="fw-bold">Gestion de generos</h1>        
-    
+    <p>Acá se listan los generos y el manejo de los mismos.</p>
     <div>
         <a href="#" class="btn btn-success"
             data-bs-toggle="modal" data-bs-target="#modalAgregarGenero">Agregar genero</a>

@@ -11,7 +11,7 @@
             
             <div class="modal-body row">
                 <div class="row mb-3">                    
-                      <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>                      
+                      <label for="titulo" class="col-sm-2 col-form-label">Título</label>                      
                       <div class="col-sm-10">
                       <input type="text" class="form-control" id="titulo" name="titulo" required>
                     </div>
@@ -42,7 +42,7 @@
                 
                 
                 <div class="row mb-3">                    
-                      <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>                      
+                      <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>                      
                       <div class="col-sm-10">
                       <textarea class="form-control" aria-label="With textarea"                             
                          id="descripcion" name="descripcion" required></textarea>
@@ -52,7 +52,7 @@
                 <div class="btn-group">
                     <div class="form-check dropend px-4 py-3">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
-                      Generos
+                      Géneros
                     </button>
                         
                         <div class="dropdown-menu form-check" aria-labelledby="dropdownMenuClickableInside">
@@ -70,8 +70,8 @@
             </div>
             
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>
     </div>

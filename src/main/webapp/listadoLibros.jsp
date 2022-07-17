@@ -8,9 +8,9 @@
 <jsp:include page="WEB-INF/pages/comunes/navbar.jsp"/>
 
 <div class="container-fluid p-5 col-8">
-    <h1 class="fw-bold">Crud de libros</h1>
+    <h1 class="fw-bold">Gestión de libros</h1>
     
-    <p>Aplicacion de listado de libros de libros</p>
+    <p>Aplicación de manejo de libros.</p>
     
     <div>
         <a href="#" class="btn btn-success"
@@ -24,11 +24,11 @@
             <table class="table table-dark table-striped">
                 <tr>
                     <td class="col-1">Portada</td>
-                    <td class="col-1">Titulo</td>
+                    <td class="col-1">Título</td>
                     <td class="col-1">Autor</td>
-                    <td class="col-1">Generos</td>
+                    <td class="col-1">Géneros</td>
                     <td class="col-1">Editora</td>
-                    <td class="col-6">Descripcion</td>
+                    <td class="col-6">Descripción</td>
                     <td class="col-1">Editar - Eliminar</td>
                 </tr>
                 <c:forEach items="${listadoLibros}" var="libro">
@@ -46,7 +46,7 @@
                                 </td>
                             </c:when>
                             <c:otherwise>
-                                <td>Sin generos</td>
+                                <td>Sin géneros</td>
                             </c:otherwise>
                         </c:choose>
                                                     
@@ -72,5 +72,5 @@
 <jsp:include page="WEB-INF/pages/libros/partes/modalAgregarLibro.jsp"/>
 
 <jsp:include page="WEB-INF/pages/comunes/footer.jsp"/>
-<script src="scripts/fotobase64.js"></script>  
+<script src="scripts/manejoForms.js"></script>  
 <jsp:include page="WEB-INF/pages/comunes/finHTML.jsp"/>

@@ -8,7 +8,7 @@
 <jsp:include page="../comunes/navbar.jsp"/>
 
 <div class="container-fluid p-2 col-8">
-    <h5 class="text-center">El genero a eliminar es:</h4>
+    <h5 class="text-center">El género a eliminar es:</h4>
     <h2 class="text-center fs-1">${generoAEliminar.nombre}</h2>
 </div>
 
