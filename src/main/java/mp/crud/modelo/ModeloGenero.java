@@ -26,6 +26,13 @@ public interface ModeloGenero {
      * @return Lista de generos asociados al libro
      */
     public List<Genero> getGenerosDeLibro(int idLibro);
+    
+    /**
+     * Retorna lista de ids de generos relacionados con el libro
+     * @param idLibro, el id del libro a buscar sus generos
+     * @return Lista de enteros que representan los ids de generos asociados al libro
+     */
+    public List<Integer> getGenerosIdDeLibro(int idLibro);
             
     /**
      * Agrega un genero al modelo
@@ -50,15 +57,15 @@ public interface ModeloGenero {
     
     /**
      * Borra las relaciones entre un libro y generos con el id del genero
-     * @param id, El id del libro a eliminar sus relaciones
+     * @param id, El id del genero a eliminar sus relaciones
      * @return La cantidad de registros modificados
      */
-    public int removeRelationGeneroLibro(int idGenero);
+    public int removeRelationsOfGenero(int idGenero);
     
     /**
      * Borra la relacion entre un libro y un genero con el id del libro y del genero
      * @param idGenero, @param idLibro, El id del libro y el del genero a eliminar sus relacion mutua
      * @return La cantidad de registros modificados
      */
-    public int removeRelationGeneroLibro(int idGenero, int idLibro);
+    public int removeRelationLibroGenero(int idLibro, int idGenero);
 }

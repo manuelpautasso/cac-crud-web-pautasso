@@ -58,12 +58,13 @@
                         <div class="dropdown-menu form-check" aria-labelledby="dropdownMenuClickableInside">
                             <c:forEach items="${listadoGeneros}" var="genero">
                                 <div class="dropdown-item mx-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkbox-${genero.nombre}">
+                                    <input class="form-check-input genero-checkbox" type="checkbox" value="${genero.id}" id="checkbox-${genero.nombre}">
                                     <label class="form-check-label" for="checkbox-${genero.nombre}">
                                         ${genero.nombre}
                                     </label>
                                 </div>
-                            </c:forEach>   
+                            </c:forEach> 
+                             <input type="hidden" id="stringGeneros" name="stringGeneros" value="">
                     </div>
                 </div>
             </div>

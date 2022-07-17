@@ -17,13 +17,18 @@ public class ModeloGeneroMySQL implements ModeloGenero {
             + "LEFT JOIN libros ON libros.id_libro = generos_libros.libro_id "
             + "WHERE libros.id_libro = ? ";
 
+    private static final String GET_ID_GENEROS_BY_BOOK_ID = "SELECT generos.id_genero FROM generos "
+            + "LEFT JOIN generos_libros ON generos_libros.genero_id = generos.id_genero "
+            + "LEFT JOIN libros ON libros.id_libro = generos_libros.libro_id "
+            + "WHERE libros.id_libro = ? ";
+    
     private static final String ADD_GENERO_QUERY = "INSERT INTO generos VALUES  (null, ?)";
     private static final String UPDATE_GENERO_QUERY = "UPDATE generos SET nombre = ? WHERE id_genero = ?";
     private static final String DELETE_GENERO_QUERY = "DELETE FROM generos WHERE id_genero = ?";
-    private static final String DELETE_GENERO_LIBROS_RELATIONS_QUERY = "DELETE FROM generos_libros "
+    private static final String DELETE_RELATIONS_BY_ID_GENERO = "DELETE FROM generos_libros "
             + "WHERE genero_id = ?";
-    private static final String DELETE_LIBRO_GENERO_RELATION_QUERY = "DELETE FROM generos_libros "
-            + "WHERE libro_id = ?, genero_id = ?";
+    private static final String DELETE_RELATION_BY_ID_LIBRO_ID_GENERO = "DELETE FROM generos_libros "
+            + "WHERE libro_id = ? AND genero_id = ?";
 
     @Override
     public List<Genero> getGeneros() {
@@ -68,6 +73,27 @@ public class ModeloGeneroMySQL implements ModeloGenero {
             try (ResultSet rs = ps.executeQuery();) {
                 while (rs.next()) {
                     generos.add(rsToGenero(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error de SQL", ex);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al obtener los generos del libro", ex);
+        }
+
+        return generos;
+    }
+    
+    
+    @Override
+    public List<Integer> getGenerosIdDeLibro(int idLibro) {
+        List<Integer> generos = new ArrayList<>();
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(GET_ID_GENEROS_BY_BOOK_ID);) {
+            ps.setInt(1, idLibro);
+            try (ResultSet rs = ps.executeQuery();) {
+                while (rs.next()) {
+                    int id = rs.getInt(1);
+                    generos.add(id);
                 }
             }
         } catch (SQLException ex) {
@@ -123,9 +149,9 @@ public class ModeloGeneroMySQL implements ModeloGenero {
     }
 
     @Override
-    public int removeRelationGeneroLibro(int idGenero) {
+    public int removeRelationsOfGenero(int idGenero) {
         int regsBorrados = 0;
-        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_GENERO_LIBROS_RELATIONS_QUERY);) {
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_RELATIONS_BY_ID_GENERO);) {
             ps.setInt(1, idGenero);
             regsBorrados = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -137,9 +163,9 @@ public class ModeloGeneroMySQL implements ModeloGenero {
     }
 
     @Override
-    public int removeRelationGeneroLibro(int idGenero, int idLibro) {
+    public int removeRelationLibroGenero(int idLibro, int idGenero) {
         int regsBorrados = 0;
-        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_LIBRO_GENERO_RELATION_QUERY);) {
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_RELATION_BY_ID_LIBRO_ID_GENERO);) {
             ps.setInt(1, idLibro);
             ps.setInt(2, idGenero);
             regsBorrados = ps.executeUpdate();
@@ -156,5 +182,6 @@ public class ModeloGeneroMySQL implements ModeloGenero {
         String nombre = rs.getString(2);
         return new Genero(id, nombre);
     }
+
 
 }

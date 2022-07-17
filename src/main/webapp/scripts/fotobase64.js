@@ -4,7 +4,7 @@
  https://stackoverflow.com/questions/14672746/how-to-compress-an-image-via-javascript-in-the-browser
  https://morioh.com/p/872a8ce21d61
  */
-var generosCheckbox = [];
+var generosDeLibro = "";
 
 const form = document.getElementById('formAgregarLibro');
 const fotoInput = document.getElementById('inputPortada');
@@ -73,9 +73,27 @@ const handleChangeInputFile = async (event) => {
     }
 };
 
+
+function handleCheckbox (){
+    generosDeLibro = "";
+    let generosCheckbox = document.getElementsByClassName('genero-checkbox');
+    let inputJsonGeneros = document.getElementById('stringGeneros');
+
+    for(let i =0; i < generosCheckbox.length; i++){        
+        if(generosCheckbox[i].checked){
+            generosDeLibro = generosDeLibro + generosCheckbox[i].value + ", ";
+        }
+    }
+
+    inputJsonGeneros.value = generosDeLibro;
+}
+
+
 const handleForm = async (event) => {
+    handleCheckbox();
     event.preventDefault();
 
+    
     if (!isFileReady) {
         console.log('Se está procesando la portada');
         return;

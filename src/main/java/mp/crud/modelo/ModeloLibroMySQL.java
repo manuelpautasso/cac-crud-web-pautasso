@@ -50,11 +50,11 @@ public class ModeloLibroMySQL implements ModeloLibro {
 
     private static final String DELETE_LIBRO_QUERY = "DELETE FROM libros WHERE id_libro = ?";
     
-    private static final String DELETE_LIBRO_GENERO_RELATIONS = "DELETE FROM generos_libros "
+    private static final String DELETE_RELATIONS_BY_ID_LIBRO = "DELETE FROM generos_libros "
             + "WHERE libro_id = ?";
     
-    private static final String DELETE_LIBRO_GENERO_RELATION = "DELETE FROM generos_libros "
-            + "WHERE libro_id = ?, genero_id = ?";
+    private static final String DELETE_RELATION_BY_ID_LIBRO_ID_GENERO = "DELETE FROM generos_libros "
+            + "WHERE libro_id = ? AND genero_id = ?";
 
     @Override
     public List<Libro> getLibrosConGeneros() {
@@ -191,9 +191,9 @@ public class ModeloLibroMySQL implements ModeloLibro {
     }
 
     @Override
-    public int removeRelationLibroGenero(int idLibro) {
+    public int removeRelationsOfLibro(int idLibro) {
         int regsBorrados = 0;
-        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_LIBRO_GENERO_RELATIONS);) {
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_RELATIONS_BY_ID_LIBRO);) {
             ps.setInt(1, idLibro);
             regsBorrados = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -207,7 +207,8 @@ public class ModeloLibroMySQL implements ModeloLibro {
     @Override
     public int removeRelationLibroGenero(int idLibro, int idGenero) {
         int regsBorrados = 0;
-        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(DELETE_LIBRO_GENERO_RELATION);) {
+        try (Connection con = Conexion.getConnection(); 
+                PreparedStatement ps = con.prepareStatement(DELETE_RELATION_BY_ID_LIBRO_ID_GENERO);) {
             ps.setInt(1, idLibro);
             ps.setInt(2, idGenero);
             regsBorrados = ps.executeUpdate();

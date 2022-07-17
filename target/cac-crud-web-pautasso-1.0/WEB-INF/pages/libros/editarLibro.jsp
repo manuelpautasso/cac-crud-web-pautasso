@@ -64,18 +64,21 @@
                                 <div class="dropdown-item mx-3">
                                     <c:forEach items="${generosLibroAEditar}" var="generoLibro">
                                         <c:if test="${encontradoEnLibro == false && generoLibro.id == genero.id}">
-                                            <input class="form-check-input" type="checkbox" id="checkbox-${genero.nombre}" checked>
+                                            <input class="form-check-input genero-checkbox" type="checkbox" value="${genero.id}"
+                                                   id="checkbox-${genero.nombre}" checked>
                                             <c:set var="encontradoEnLibro" value="true" scope="page"/>
                                         </c:if>
                                     </c:forEach>
                                     <c:if test="${encontradoEnLibro == false}">
-                                        <input class="form-check-input" type="checkbox" id="checkbox-${genero.nombre}">
+                                        <input class="form-check-input genero-checkbox" type="checkbox" value="${genero.id}" 
+                                               id="checkbox-${genero.nombre}">
                                     </c:if>
-                                    <label class="form-check-label" for="checkbox-label-${genero.nombre}">
+                                    <label class="form-check-label" for="checkbox-${genero.nombre}">
                                         ${genero.nombre}
                                     </label>
                                 </div>
                             </c:forEach>   
+                            <input type="hidden" id="stringGeneros" name="stringGeneros" value="">
                         </div>
                     </div>
                 </div>

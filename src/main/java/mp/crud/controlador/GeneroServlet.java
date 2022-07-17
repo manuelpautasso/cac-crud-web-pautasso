@@ -75,7 +75,7 @@ public class GeneroServlet extends HttpServlet{
                 break;
             case "delete":
                 id = Integer.parseInt(request.getParameter("id"));
-                modeloGenero.removeRelationGeneroLibro(id);
+                modeloGenero.removeRelationsOfGenero(id);
                 modeloGenero.removeGenero(id);
                 break;
         }
