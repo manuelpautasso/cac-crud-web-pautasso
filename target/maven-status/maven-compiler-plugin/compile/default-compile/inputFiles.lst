@@ -3,6 +3,7 @@ P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\c
 P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\modelo\ModeloLibroMySQL.java
 P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\modelo\Conexion.java
 P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\modelo\ModeloGeneroMySQL.java
+P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\enums\VariablesGlobales.java
 P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\modelo\Libro.java
 P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\modelo\ModeloGenero.java
 P:\Descargas\Cursos\JAVA\Hibernate\cac-crud-web-pautasso\src\main\java\mp\crud\modelo\ModeloFactory.java

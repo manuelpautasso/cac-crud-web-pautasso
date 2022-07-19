@@ -1,11 +1,12 @@
-mp\crud\modelo\Genero.class
 mp\crud\controlador\GeneroServlet.class
 mp\crud\modelo\ModeloLibroMySQL.class
-mp\crud\modelo\Libro.class
 mp\crud\modelo\ModeloGenero.class
-mp\crud\modelo\ModeloFactory.class
 mp\crud\controlador\LibroServlet.class
+mp\crud\modelo\ModeloLibro.class
+mp\crud\enums\VariablesGlobales.class
+mp\crud\modelo\Genero.class
+mp\crud\modelo\Libro.class
+mp\crud\modelo\ModeloFactory.class
 mp\crud\exception\InvalidParameterException.class
 mp\crud\modelo\Conexion.class
-mp\crud\modelo\ModeloLibro.class
 mp\crud\modelo\ModeloGeneroMySQL.class
